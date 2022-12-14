@@ -1,0 +1,15 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "Personal solutions for https://adventofcode.com",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carmanchris31/advent-of-code.git"
+  },
+  "author": {
+    "name": "Christopher Carman",
+    "email": "carmanchris31@gmail.com"
+  },
+  "license": "MIT"
+}
