@@ -22,11 +22,3 @@ export function getDelta(start: Position, end: Position): Delta {
     y: end.y - start.y,
   };
 }
-
-export function getDistance(start: Position, end: Position): Delta {
-  const delta = getDelta(start, end);
-  return {
-    x: Math.abs(delta.x),
-    y: Math.abs(delta.y),
-  };
-}
