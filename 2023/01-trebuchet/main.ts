@@ -3,7 +3,7 @@ import { splitLines } from "../../lib/string/split-lines.js";
 import { wordMap } from "./word-map.js";
 
 export function findCalibrations(input: string) {
-  const lines = splitLines(input).map((line) => line.trim());
+  const lines = splitLines(input.trim()).map((line) => line.trim());
 
   let calibrations: number[] = [];
   for (const line of lines) {
