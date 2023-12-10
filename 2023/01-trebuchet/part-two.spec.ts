@@ -1,8 +1,8 @@
-import test from "ava";
+import { expect, test } from "@jest/globals";
 import { sum } from "../../lib/number/sum.js";
 import { findCalibrations } from "./main.js";
 
-test("sample", (t) => {
+test("sample", () => {
   const input = `
   two1nine
   eightwothree
@@ -13,11 +13,11 @@ test("sample", (t) => {
   7pqrstsixteen
 `;
 
-  t.deepEqual(findCalibrations(input), [29, 83, 13, 24, 42, 14, 76]);
-  t.is(sum(findCalibrations(input)), 281);
+  expect(findCalibrations(input)).toEqual([29, 83, 13, 24, 42, 14, 76]);
+  expect(sum(findCalibrations(input))).toEqual(281);
 });
 
-test("real", (t) => {
+test("real", () => {
   const input = `
   eightfivesssxxmgthreethreeone1sevenhnz
 hzdlftdtfqfdbxgsix9onetwo13
@@ -1021,19 +1021,18 @@ ninesevensrzxkzpmgz8kcjxsbdftwoner
 dljxl7five6nrzfh5one
 `;
 
-  t.is(sum(findCalibrations(input)), 54770);
+  expect(sum(findCalibrations(input))).toEqual(54770);
 });
 
-test("overlapping words", (t) => {
-  t.deepEqual(
+test("overlapping words", () => {
+  expect(
     findCalibrations(`
   eighthree
   sevenine
-  `),
-    [83, 79]
-  );
+  `)
+  ).toEqual([83, 79]);
 });
 
-test("single digit", (t) => {
-  t.deepEqual(findCalibrations(`8j`), [88]);
+test("single digit", () => {
+  expect(findCalibrations(`8j`)).toEqual([88]);
 });

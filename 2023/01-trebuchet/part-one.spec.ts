@@ -1,8 +1,8 @@
-import test from "ava";
+import { expect, test } from "@jest/globals";
 import { sum } from "../../lib/number/sum.js";
 import { findCalibrations } from "./main.js";
 
-test("sample", (t) => {
+test("sample", () => {
   const input = `
   1abc2
   pqr3stu8vwx
@@ -10,11 +10,11 @@ test("sample", (t) => {
   treb7uchet
     `;
 
-  t.deepEqual(findCalibrations(input), [12, 38, 15, 77]);
-  t.is(sum(findCalibrations(input)), 142);
+  expect(findCalibrations(input)).toEqual([12, 38, 15, 77]);
+  expect(sum(findCalibrations(input))).toEqual(142);
 });
 
-test("real", (t) => {
+test("real", () => {
   const input = `
   eightfivesssxxmgthreethreeone1sevenhnz
   hzdlftdtfqfdbxgsix9onetwo13
@@ -1018,5 +1018,5 @@ test("real", (t) => {
   dljxl7five6nrzfh5one
     `;
 
-  t.is(sum(findCalibrations(input)), 54630);
+  expect(sum(findCalibrations(input))).toEqual(54770);
 });

@@ -1,8 +1,8 @@
-import test from "ava";
+import { expect, test } from "@jest/globals";
 import { sum } from "../../lib/number/sum.js";
 import { isGamePossible, parseGames } from "./main.js";
 
-test("example", (t) => {
+test("example", () => {
   const input = `
     Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
     Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
@@ -12,7 +12,7 @@ test("example", (t) => {
     `;
 
   const games = parseGames(input);
-  t.deepEqual(games, [
+  expect(games).toEqual([
     {
       id: 1,
       counts: [
@@ -109,13 +109,10 @@ test("example", (t) => {
     blue: 14,
   };
   const possibleGames = games.filter((game) => isGamePossible(game, maxColors));
-  t.deepEqual(
-    possibleGames.map((game) => game.id),
-    [1, 2, 5]
-  );
+  expect(possibleGames.map((game) => game.id)).toEqual([1, 2, 5]);
 });
 
-test("missing color", (t) => {
+test("missing color", () => {
   const input = `Game 1: 12 blue, 15 red`;
 
   const maxColors = {
@@ -124,10 +121,10 @@ test("missing color", (t) => {
   const possibleGames = parseGames(input).filter((game) =>
     isGamePossible(game, maxColors)
   );
-  t.deepEqual(possibleGames.length, 0);
+  expect(possibleGames.length).toEqual(0);
 });
 
-test("real", (t) => {
+test("real", () => {
   const input = `
   Game 1: 12 blue, 15 red, 2 green; 17 red, 8 green, 5 blue; 8 red, 17 blue; 9 green, 1 blue, 4 red
 Game 2: 6 red, 6 blue, 2 green; 1 blue, 1 red; 6 green, 1 red, 10 blue
@@ -239,5 +236,5 @@ Game 100: 2 red, 13 blue, 1 green; 1 green, 12 blue; 1 red, 5 blue, 1 green; 3 b
   const possibleGames = parseGames(input).filter((game) =>
     isGamePossible(game, maxColors)
   );
-  t.deepEqual(sum(possibleGames.map((game) => game.id)), 2716);
+  expect(sum(possibleGames.map((game) => game.id))).toEqual(2716);
 });

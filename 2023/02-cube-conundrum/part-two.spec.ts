@@ -1,8 +1,8 @@
-import test from "ava";
+import { expect, test } from "@jest/globals";
 import { sum } from "../../lib/number/sum.js";
 import { getMinColorsNeeded, parseGames } from "./main.js";
 
-test("example", (t) => {
+test("example", () => {
   const input = `
     Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green
 Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue
@@ -13,7 +13,7 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
 
   const games = parseGames(input);
   const minimums = games.map((game) => getMinColorsNeeded(game));
-  t.deepEqual(minimums, [
+  expect(minimums).toEqual([
     {
       red: 4,
       green: 2,
@@ -44,10 +44,10 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
   const powers = minimums.map((min) =>
     Object.values(min).reduce((acc, m) => acc * m, 1)
   );
-  t.deepEqual(powers, [48, 12, 1560, 630, 36]);
+  expect(powers).toEqual([48, 12, 1560, 630, 36]);
 });
 
-test("real", (t) => {
+test("real", () => {
   const input = `
   Game 1: 12 blue, 15 red, 2 green; 17 red, 8 green, 5 blue; 8 red, 17 blue; 9 green, 1 blue, 4 red
   Game 2: 6 red, 6 blue, 2 green; 1 blue, 1 red; 6 green, 1 red, 10 blue
@@ -157,5 +157,5 @@ test("real", (t) => {
   const powers = minimums.map((min) =>
     Object.values(min).reduce((acc, m) => acc * m, 1)
   );
-  t.is(sum(powers), 0);
+  expect(sum(powers)).toEqual(72227);
 });
